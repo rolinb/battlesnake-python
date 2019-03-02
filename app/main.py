@@ -83,7 +83,7 @@ def move():
         counter = 0;
         for others in snake['body']:
 
-            if(counter = 0 and board[others['x']][others['y']] != 'm'):
+            if(counter == 0 and board[others['x']][others['y']] != 'm'):
                 board[others['x']][others['y']] = 'o'
                 #fix maybe
             else:
