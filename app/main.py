@@ -42,9 +42,12 @@ def start():
     print(json.dumps(data))
 
     print(data['board']['width'])
-    color = "#736CCB"
-	#headType: "beluga"
-    #tailType: "curled"
+    color = "#42f4c8"
+	
+    """
+    headType: "beluga"
+    tailType: "curled"
+    """
 
     return start_response(color)
 
