@@ -43,8 +43,8 @@ def start():
 
     print(data['board']['width'])
     color: "#736CCB"
-	headType: "silly"
-	tailType: "bolt"
+    #headType: "silly"
+    #tailType: "bolt"
 
     return start_response(color)
 
