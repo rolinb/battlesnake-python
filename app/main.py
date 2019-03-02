@@ -3,6 +3,7 @@ import os
 import random
 import operator
 import bottle
+import math
 
 from api import ping_response, start_response, move_response, end_response
 
@@ -102,33 +103,44 @@ def move():
         "down": 0
     }
 
+    distFoodLeft = []
+    distFoodRight = []
+    distFoodUp = []
+    distFoodDown = []
+
     if(y+1 < width and board[x][y+1] != ('m' or 'o')):
         print("chose down" + str(board[x][y+1]))
         priorityDirections["down"] += 1
+
+        for food in data['board']['food']:
+            dist = math.sqrt( (board[food['x']] - x)**2 + (board[food['y']] - y+1)**2 )
+            distFoodDown.append(dist)
+
         #possibleDirections.append('down')
     if( x+1 < width and board[x+1][y] != ('m' or 'o')):
         print("chose right" + str(board[x+1][y]))
         print("X+1 = " + str(x+1))
         priorityDirections["right"] += 1
+
+        for food in data['board']['food']:
+            dist = math.sqrt( (board[food['x']] - x+1)**2 + (board[food['y']] - y)**2 )
+            distFoodRight.append(dist)
         #possibleDirections.append('right')
     if(x-1 > 0 and board[x-1][y] != ('m' or 'o')):
         print("chose left" + str(board[x-1][y]))
         #possibleDirections.append('left')
         priorityDirections["left"] += 1
+        for food in data['board']['food']:
+            dist = math.sqrt( (board[food['x']] - x-1)**2 + (board[food['y']] - y)**2 )
+            distFoodLeft.append(dist)
     if(y-1 > 0 and board[x][y-1] != ('m' or 'o')):
         print("went up")
         priorityDirections["up"] += 1
+        for food in data['board']['food']:
+            dist = math.sqrt( (board[food['x']] - x)**2 + (board[food['y']] - y-1)**2 )
+            distFoodUp.append(dist)
         #possibleDirections.append('up')
 
-    """dirNum = max(priorityDirections)
-    if(dirNum == 0):
-        direction = 'left'
-    elif(dirNum == 1):
-        direction = 'up'
-    elif(dirNum == 2):
-        direction = 'right'
-    else:
-        direction = 'down' """
     #direction = random.choice(possibleDirections)
     direction = max(priorityDirections.iteritems(), key=operator.itemgetter(1))[0]
 
