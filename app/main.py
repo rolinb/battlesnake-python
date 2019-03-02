@@ -94,7 +94,7 @@ def move():
     print(me['health'])
 
     #0 = left, 1 = up, 2 = right, 3 = down
-    priorityDirections = []
+    priorityDirections = [4]
 
     if(y+1 < width and board[x][y+1] != 1):
         print("chose down" + str(board[x][y+1]))
@@ -116,13 +116,13 @@ def move():
 
     dirNum = max(priorityDirections)
     if(dirNum == 0):
-        direction = "left"
+        direction = 'left'
     elif(dirNum == 1):
-        direction = "up"
+        direction = 'up'
     elif(dirNum == 2):
-        direction = "right"
+        direction = 'right'
     else:
-        direction = "down"
+        direction = 'down'
     #direction = random.choice(possibleDirections)
 
     return move_response(direction)
