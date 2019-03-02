@@ -118,41 +118,44 @@ def move():
         print("chose down" + str(board[x][y+1]))
         priorityDirections["down"] += 1
 
-        for food in data['board']['food']:
-            dist = math.sqrt( (x - food['x'])**2 + (y+1 - food['y'])**2 )
-            distFoodDown.append(dist)
+        if(data['you']['health'] < 50):
+            for food in data['board']['food']:
+                dist = math.sqrt( (x - food['x'])**2 + (y+1 - food['y'])**2 )
+                distFoodDown.append(dist)
 
-        priorityDirections["down"] += 100 - min(distFoodDown)
+            priorityDirections["down"] += 100 - min(distFoodDown)
         #possibleDirections.append('down')
     if( x+1 < width and board[x+1][y] != 'm' and board[x+1][y] != 'o'):
         print("chose right" + str(board[x+1][y]))
         print("X+1 = " + str(x+1))
         priorityDirections["right"] += 1
+        if(data['you']['health'] < 50):
+            for food in data['board']['food']:
+                dist = math.sqrt( (x+1 - food['x'])**2 + (y - food['y'])**2 )
+                distFoodRight.append(dist)
 
-        for food in data['board']['food']:
-            dist = math.sqrt( (x+1 - food['x'])**2 + (y - food['y'])**2 )
-            distFoodRight.append(dist)
-
-        priorityDirections["right"] += 100 - min(distFoodRight)
+            priorityDirections["right"] += 100 - min(distFoodRight)
         #possibleDirections.append('right')
-    if(x-1 > 0 and board[x-1][y] != 'm' and board[x-1][y] != 'o'):
+    if(x-1 >= 0 and board[x-1][y] != 'm' and board[x-1][y] != 'o'):
         print("chose left" + str(board[x-1][y]))
         #possibleDirections.append('left')
         priorityDirections["left"] += 1
-        for food in data['board']['food']:
-            dist = math.sqrt( (x-1 - food['x'])**2 + (y - food['y'])**2 )
-            distFoodLeft.append(dist)
-        priorityDirections["left"] += 100 - min(distFoodLeft)
+        if(data['you']['health'] < 50):
+            for food in data['board']['food']:
+                dist = math.sqrt( (x-1 - food['x'])**2 + (y - food['y'])**2 )
+                distFoodLeft.append(dist)
+            priorityDirections["left"] += 100 - min(distFoodLeft)
 
-    if(y-1 > 0 and board[x][y-1] != 'm' and board[x][y-1] != 'o'):
+    if(y-1 >= 0 and board[x][y-1] != 'm' and board[x][y-1] != 'o'):
         print("went up")
         priorityDirections["up"] += 1
-        for food in data['board']['food']:
-            dist = math.sqrt( (x - food['x'])**2 + (y-1 - food['y'])**2 )
-            distFoodUp.append(dist)
-        #possibleDirections.append('up')
-        priorityDirections["up"] += 100 - min(distFoodUp)
-
+        if(data['you']['health'] < 50):
+            for food in data['board']['food']:
+                dist = math.sqrt( (x - food['x'])**2 + (y-1 - food['y'])**2 )
+                distFoodUp.append(dist)
+            #possibleDirections.append('up')
+            
+            priorityDirections["up"] += 100 - min(distFoodUp)
 
 
 
