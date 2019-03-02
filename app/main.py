@@ -80,7 +80,7 @@ def move():
         print("X = " + str(item['x']) + " Y = " +str(item['y']))
         board[item['x']][item['y']] = 1
 
-        snakes = data['board']['snakes']
+    snakes = data['board']['snakes']
     for snake in snakes:
         for others in snake['body']:
             #print("wtf" + str(item['y']))
