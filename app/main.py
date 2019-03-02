@@ -42,16 +42,12 @@ def start():
     print(json.dumps(data))
 
     print(data['board']['width'])
-    color = "#42f4c8"
-    headType = "beluga"
-    tailType = "curled"
-	
-    """
-    headType: "beluga"
-    tailType: "curled"
-    """
 
-    return start_response(color)
+    return {
+        "color": "#42f4c8",
+        "headType": "bender",
+        "tailType": "bolt"
+    }
 
 
 @bottle.post('/move')
