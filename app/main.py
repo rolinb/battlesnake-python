@@ -73,17 +73,20 @@ def move():
     #grabs our body coordinates
     for item in me['body']:
         print("X = " + str(item['x']) + " Y = " +str(item['y']))
-        board[item['x']][item['y']] = 1
+        board[item['x']][item['y']] = 'm'
+        # square with self is m
 
     snakes = data['board']['snakes']
     for snake in snakes:
         for others in snake['body']:
             #print("wtf" + str(item['y']))
-            board[others['x']][others['y']] = 1
+            board[others['x']][others['y']] = 'o'
+            # square with other snake is o
+
     #print(snakes)
     for food in data['board']['food']:
-        board[food['x']][food['y']] = 2
-
+        board[food['x']][food['y']] = 'f'
+        # square with food is f
 
     #print (board)
     x = me['body'][0]['x']
