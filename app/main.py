@@ -43,13 +43,15 @@ def start():
 
     print(data['board']['width'])
     color = "#42f4c8"
+    headType = "beluga"
+    tailType = "curled"
 	
     """
     headType: "beluga"
     tailType: "curled"
     """
 
-    return start_response(color)
+    return start_response(color, headType, tailType)
 
 
 @bottle.post('/move')
