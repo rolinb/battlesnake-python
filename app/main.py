@@ -102,22 +102,17 @@ def move():
         "down": 0
     }
 
-    if(y+1 < width and board[x][y+1] != 'm' and  board[x][y+1] != 'o'):
-        print("chose down" + str(board[x][y+1]))
-        priorityDirections["down"] += 1
+    if(y+1 == width or board[x][y+1] == 'm' or  board[x][y+1] == 'o'):
+        priorityDirections["down"] -= 100
         #possibleDirections.append('down')
-    if( x+1 < width and board[x+1][y] != 'm' and  board[x+1][y] != 'o'):
-        print("chose right" + str(board[x+1][y]))
-        print("X+1 = " + str(x+1))
-        priorityDirections["right"] += 1
+    if( x+1 == width or board[x+1][y] == 'm' or  board[x+1][y] == 'o'):
+        priorityDirections["right"] -= 100
         #possibleDirections.append('right')
-    if(x-1 > 0 and board[x-1][y] != 'm' and  board[x-1][y] != 'o'):
-        print("chose left" + str(board[x-1][y]))
+    if(x-1 == 0 or board[x-1][y] == 'm' or  board[x-1][y] == 'o'):
         #possibleDirections.append('left')
-        priorityDirections["left"] += 1
-    if(y-1 > 0 and board[x][y-1] != 'm' and  board[x][y-1] != 'o'):
-        print("went up")
-        priorityDirections["up"] += 1
+        priorityDirections["left"] -= 100
+    if(y-1 == 0 or board[x][y-1] == 'm' or  board[x][y-1] == 'o'):
+        priorityDirections["up"] -= 100
         #possibleDirections.append('up')
 
     """dirNum = max(priorityDirections)
