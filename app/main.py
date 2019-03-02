@@ -42,7 +42,9 @@ def start():
     print(json.dumps(data))
 
     print(data['board']['width'])
-    color = "#00FF00"
+    color: "#736CCB"
+	headType: "silly"
+	tailType: "bolt"
 
     return start_response(color)
 
