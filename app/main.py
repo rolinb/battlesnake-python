@@ -90,24 +90,37 @@ def move():
     y = me['body'][0]['y']
     print(me['health'])
 
-    possibleDirections = []
+    #0 = left, 1 = up, 2 = right, 3 = down
+    priorityDirections = []
 
     if(y+1 < width and board[x][y+1] != 1):
         print("chose down" + str(board[x][y+1]))
-        possibleDirections.append('down')
+        priorityDirections[3]++
+        #possibleDirections.append('down')
     if( x+1 < width and board[x+1][y] != 1 ):
         print("chose right" + str(board[x+1][y]))
         print("X+1 = " + str(x+1))
-        possibleDirections.append('right')
+        priorityDirections[2]++
+        #possibleDirections.append('right')
     if(x-1 > 0 and board[x-1][y] != 1 ):
         print("chose left" + str(board[x-1][y]))
-        possibleDirections.append('left')
+        #possibleDirections.append('left')
+        priorityDirections[0]++
     if(y-1 > 0 and board[x][y-1] != 1):
         print("went up")
-        possibleDirections.append('up')
+        priorityDirections[1]++
+        #possibleDirections.append('up')
 
-
-    direction = random.choice(possibleDirections)
+    dirNum = max(priorityDirections)
+    if(dirNum == 0):
+        direction = "left"
+    elif(dirNum == 1):
+        direction = "up"
+    elif(dirNum == 2):
+        direction = "right"
+    else:
+        direction = "down"
+    #direction = random.choice(possibleDirections)
 
     return move_response(direction)
 
