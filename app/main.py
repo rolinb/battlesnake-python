@@ -108,13 +108,8 @@ def move():
     if(x-1 > 0 and board[x-1][y] != 'm' or 'o'):
         print("chose left" + str(board[x-1][y]))
         #possibleDirections.append('left')
-<<<<<<< HEAD
-        priorityDirections[0]++
-    if(y-1 > 0 and board[x][y-1] != 'm' or 'o'):
-=======
         priorityDirections[0]+=1
-    if(y-1 > 0 and board[x][y-1] != 1):
->>>>>>> 33c86cdcdd2202a5a1a8a90694633a6fb6774394
+    if(y-1 > 0 and board[x][y-1] != 'm' or 'o'):
         print("went up")
         priorityDirections[1]+=1
         #possibleDirections.append('up')
