@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import operator
 import bottle
 
 from api import ping_response, start_response, move_response, end_response
@@ -94,27 +95,32 @@ def move():
     print(me['health'])
 
     #0 = left, 1 = up, 2 = right, 3 = down
-    priorityDirections = [4]
+    priorityDirections = {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+    }
 
     if(y+1 < width and board[x][y+1] != 'm' or 'o'):
         print("chose down" + str(board[x][y+1]))
-        priorityDirections[3]+=1
+        priorityDirections["down"] += 1
         #possibleDirections.append('down')
     if( x+1 < width and board[x+1][y] != 'm' or 'o'):
         print("chose right" + str(board[x+1][y]))
         print("X+1 = " + str(x+1))
-        priorityDirections[2]+=1
+        priorityDirections["right"] += 1
         #possibleDirections.append('right')
     if(x-1 > 0 and board[x-1][y] != 'm' or 'o'):
         print("chose left" + str(board[x-1][y]))
         #possibleDirections.append('left')
-        priorityDirections[0]+=1
+        priorityDirections["left"] += 1
     if(y-1 > 0 and board[x][y-1] != 'm' or 'o'):
         print("went up")
-        priorityDirections[1]+=1
+        priorityDirections["up"] += 1
         #possibleDirections.append('up')
 
-    dirNum = max(priorityDirections)
+    """dirNum = max(priorityDirections)
     if(dirNum == 0):
         direction = 'left'
     elif(dirNum == 1):
@@ -122,8 +128,9 @@ def move():
     elif(dirNum == 2):
         direction = 'right'
     else:
-        direction = 'down'
+        direction = 'down' """
     #direction = random.choice(possibleDirections)
+    direction = max(priorityDirections.iteritems(), key=operator.itemgetter(1))[0]
 
     return move_response(direction)
 
