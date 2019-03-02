@@ -113,7 +113,7 @@ def move():
         priorityDirections["down"] += 1
 
         for food in data['board']['food']:
-            dist = math.sqrt( (board[food['x']] - x)**2 + (board[food['y']] - y+1)**2 )
+            dist = math.sqrt( ((int)board[food['x']] - x)**2 + ((int)board[food['y']] - y+1)**2 )
             distFoodDown.append(dist)
 
         priorityDirections["down"] += 100 - min(distFoodDown)
@@ -124,7 +124,7 @@ def move():
         priorityDirections["right"] += 1
 
         for food in data['board']['food']:
-            dist = math.sqrt( (board[food['x']] - x+1)**2 + (board[food['y']] - y)**2 )
+            dist = math.sqrt( ((int)board[food['x']] - x+1)**2 + ((int)board[food['y']] - y)**2 )
             distFoodRight.append(dist)
 
         priorityDirections["right"] += 100 - min(distFoodRight)
@@ -134,7 +134,7 @@ def move():
         #possibleDirections.append('left')
         priorityDirections["left"] += 1
         for food in data['board']['food']:
-            dist = math.sqrt( (board[food['x']] - x-1)**2 + (board[food['y']] - y)**2 )
+            dist = math.sqrt( ((int)board[food['x']] - x-1)**2 + ((int)board[food['y']] - y)**2 )
             distFoodLeft.append(dist)
         priorityDirections["left"] += 100 - min(distFoodLeft)
 
@@ -142,7 +142,7 @@ def move():
         print("went up")
         priorityDirections["up"] += 1
         for food in data['board']['food']:
-            dist = math.sqrt( (board[food['x']] - x)**2 + (board[food['y']] - y-1)**2 )
+            dist = math.sqrt( ((int)board[food['x']] - x)**2 + ((int)board[food['y']] - y-1)**2 )
             distFoodUp.append(dist)
         #possibleDirections.append('up')
         priorityDirections["up"] += 100 - min(distFoodUp)
