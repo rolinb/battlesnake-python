@@ -119,9 +119,10 @@ def move():
         priorityDirections["down"] += 1
 
         for food in data['board']['food']:
-            dist = math.sqrt( (board[food['x']] - x)**2 + (board[food['y']] - y+1)**2 )
+            dist = math.sqrt( (food['x'] - x)**2 + (food['y'] - y+1)**2 )
             distFoodDown.append(dist)
 
+        priorityDirections["down"] += 100 - min(distFoodDown)
         #possibleDirections.append('down')
     if( x+1 < width and board[x+1][y] != ('m' or 'o')):
         print("chose right" + str(board[x+1][y]))
@@ -129,25 +130,35 @@ def move():
         priorityDirections["right"] += 1
 
         for food in data['board']['food']:
-            dist = math.sqrt( (board[food['x']] - x+1)**2 + (board[food['y']] - y)**2 )
+            dist = math.sqrt( (food['x'] - x+1)**2 + (food['y'] - y)**2 )
             distFoodRight.append(dist)
+
+        priorityDirections["right"] += 100 - min(distFoodRight)
         #possibleDirections.append('right')
     if(x-1 > 0 and board[x-1][y] != ('m' or 'o')):
         print("chose left" + str(board[x-1][y]))
         #possibleDirections.append('left')
         priorityDirections["left"] += 1
         for food in data['board']['food']:
-            dist = math.sqrt( (board[food['x']] - x-1)**2 + (board[food['y']] - y)**2 )
+            dist = math.sqrt( (food['x'] - x-1)**2 + (food['y'] - y)**2 )
             distFoodLeft.append(dist)
+        priorityDirections["left"] += 100 - min(distFoodLeft)
+
     if(y-1 > 0 and board[x][y-1] != ('m' or 'o')):
         print("went up")
         priorityDirections["up"] += 1
         for food in data['board']['food']:
-            dist = math.sqrt( (board[food['x']] - x)**2 + (board[food['y']] - y-1)**2 )
+            dist = math.sqrt( (food['x'] - x)**2 + (food['y'] - y-1)**2 )
             distFoodUp.append(dist)
         #possibleDirections.append('up')
+        priorityDirections["up"] += 100 - min(distFoodUp)
 
 
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> b293b524b64585b28776b47e0f437e827bf7086c
 
     #direction = random.choice(possibleDirections)
     direction = max(priorityDirections.iteritems(), key=operator.itemgetter(1))[0]
