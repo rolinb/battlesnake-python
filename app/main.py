@@ -80,9 +80,15 @@ def move():
 
     snakes = data['board']['snakes']
     for snake in snakes:
+        counter = 0;
         for others in snake['body']:
-            #print("wtf" + str(item['y']))
-            board[others['x']][others['y']] = 'o'
+
+            if(counter = 0 and board[others['x']][others['y']] != 'm'):
+                board[others['x']][others['y']] = 'o'
+                #fix maybe
+            else:
+                board[others['x']][others['y']] = 'o'
+            counter += 1;
             # square with other snake is o
 
     #print(snakes)
@@ -141,7 +147,7 @@ def move():
             distFoodUp.append(dist)
         #possibleDirections.append('up')
 
-    
+
 
     #direction = random.choice(possibleDirections)
     direction = max(priorityDirections.iteritems(), key=operator.itemgetter(1))[0]
