@@ -17,7 +17,6 @@ def static(path):
     """
     Given a path, return the static file located relative
     to the static folder.
-
     This can be used to return the snake head URL in an API response.
     """
     return bottle.static_file(path, root='static/')
@@ -43,13 +42,6 @@ def start():
 
     print(data['board']['width'])
     color = "#42f4c8"
-    headType = "beluga"
-    tailType = "curled"
-
-    """
-    headType: "beluga"
-    tailType: "curled"
-    """
 
     return start_response(color)
 
@@ -61,7 +53,6 @@ def move():
     """
     TODO: Using the data from the endpoint request object, your
             snake AI must choose a direction to move in.
-
     """
     #print("DUMPING")
     #print(json.dumps(data))
