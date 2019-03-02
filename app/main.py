@@ -69,9 +69,10 @@ def move():
 
     #print(me['body'][0])
 
+
     board = [[0 for i in range(width)] for j in range(width)]
 
-
+    #grabs our body coordinates
     for item in me['body']:
         print("X = " + str(item['x']) + " Y = " +str(item['y']))
         board[item['x']][item['y']] = 1
@@ -81,14 +82,14 @@ def move():
     y = me['body'][0]['y']
     print(me['health'])
 
-    if(y+1 < width-1 and board[x][y+1] == 0):
+    if(y+1 < width and board[x][y+1] == 0):
         print("chose down" + str(board[x][y+1]))
         direction = 'down'
-    elif( x+1 < width-1 and board[x+1][y] == 0 ):
+    elif( x+1 < width and board[x+1][y] == 0 ):
         print("chose right" + str(board[x+1][y]))
         print("X+1 = " + str(x+1))
         direction = 'right'
-    elif(x-1 > 1 and board[x-1][y] == 0 ):
+    elif(x-1 > 0 and board[x-1][y] == 0 ):
         print("chose left" + str(board[x-1][y]))
         direction = 'left'
     else:
