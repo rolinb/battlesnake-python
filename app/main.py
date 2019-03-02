@@ -17,7 +17,6 @@ def static(path):
     """
     Given a path, return the static file located relative
     to the static folder.
-
     This can be used to return the snake head URL in an API response.
     """
     return bottle.static_file(path, root='static/')
@@ -42,12 +41,9 @@ def start():
     print(json.dumps(data))
 
     print(data['board']['width'])
+    color = "#42f4c8"
 
-    return {
-        "color": "#42f4c8",
-        "headType": "bender",
-        "tailType": "bolt"
-    }
+    return start_response(color)
 
 
 @bottle.post('/move')
@@ -57,7 +53,6 @@ def move():
     """
     TODO: Using the data from the endpoint request object, your
             snake AI must choose a direction to move in.
-
     """
     #print("DUMPING")
     #print(json.dumps(data))
@@ -97,17 +92,17 @@ def move():
 
     possibleDirections = []
 
-    if(y+1 < width and board[x][y+1] == 0):
+    if(y+1 < width and board[x][y+1] != 1):
         print("chose down" + str(board[x][y+1]))
         possibleDirections.append('down')
-    if( x+1 < width and board[x+1][y] == 0 ):
+    if( x+1 < width and board[x+1][y] != 1 ):
         print("chose right" + str(board[x+1][y]))
         print("X+1 = " + str(x+1))
         possibleDirections.append('right')
-    if(x-1 > 0 and board[x-1][y] == 0 ):
+    if(x-1 > 0 and board[x-1][y] != 1 ):
         print("chose left" + str(board[x-1][y]))
         possibleDirections.append('left')
-    if(y-1 > 0 and board[x][y-1] == 0):
+    if(y-1 > 0 and board[x][y-1] != 1):
         print("went up")
         possibleDirections.append('up')
 
