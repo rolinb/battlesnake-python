@@ -101,17 +101,17 @@ def move():
 
     possibleDirections = []
 
-    if(y+1 < width and board[x][y+1] == 0):
+    if(y+1 < width and board[x][y+1] != 1):
         print("chose down" + str(board[x][y+1]))
         possibleDirections.append('down')
-    if( x+1 < width and board[x+1][y] == 0 ):
+    if( x+1 < width and board[x+1][y] != 1 ):
         print("chose right" + str(board[x+1][y]))
         print("X+1 = " + str(x+1))
         possibleDirections.append('right')
-    if(x-1 > 0 and board[x-1][y] == 0 ):
+    if(x-1 > 0 and board[x-1][y] != 1 ):
         print("chose left" + str(board[x-1][y]))
         possibleDirections.append('left')
-    if(y-1 > 0 and board[x][y-1] == 0):
+    if(y-1 > 0 and board[x][y-1] != 1):
         print("went up")
         possibleDirections.append('up')
 
