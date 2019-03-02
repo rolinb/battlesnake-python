@@ -41,6 +41,7 @@ def start():
     """
     print(json.dumps(data))
 
+    print(data['board']['width'])
     color = "#00FF00"
 
     return start_response(color)
@@ -53,11 +54,47 @@ def move():
     """
     TODO: Using the data from the endpoint request object, your
             snake AI must choose a direction to move in.
-    """
-    print(json.dumps(data))
 
+    """
+    #print("DUMPING")
+    #print(json.dumps(data))
+    #print("JUST ME")
+    #print(data['you'])
     directions = ['up', 'down', 'left', 'right']
     direction = random.choice(directions)
+
+    me = data['you']
+
+    width = data['board']['width']
+
+    #print(me['body'][0])
+
+    board = [[0 for i in range(width)] for j in range(width)]
+
+
+    for item in me['body']:
+        print("X = " + str(item['x']) + " Y = " +str(item['y']))
+        board[item['x']][item['y']] = 1
+
+    #print (board)
+    x = me['body'][0]['x']
+    y = me['body'][0]['y']
+    print(me['health'])
+
+    if(y+1 < width-1 and board[x][y+1] == 0):
+        print("chose down" + str(board[x][y+1]))
+        direction = 'down'
+    elif( x+1 < width-1 and board[x+1][y] == 0 ):
+        print("chose right" + str(board[x+1][y]))
+        print("X+1 = " + str(x+1))
+        direction = 'right'
+    elif(x-1 > 1 and board[x-1][y] == 0 ):
+        print("chose left" + str(board[x-1][y]))
+        direction = 'left'
+    else:
+        print("went up")
+        direction = 'up'
+
 
     return move_response(direction)
 
@@ -70,7 +107,7 @@ def end():
     TODO: If your snake AI was stateful,
         clean up any stateful objects here.
     """
-    print(json.dumps(data))
+    #print(json.dumps(data))
 
     return end_response()
 
