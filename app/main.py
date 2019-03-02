@@ -108,10 +108,10 @@ def move():
     if( x+1 == width or board[x+1][y] == 'm' or  board[x+1][y] == 'o'):
         priorityDirections["right"] -= 100
         #possibleDirections.append('right')
-    if(x-1 == 0 or board[x-1][y] == 'm' or  board[x-1][y] == 'o'):
+    if(x-1 == -1 or board[x-1][y] == 'm' or  board[x-1][y] == 'o'):
         #possibleDirections.append('left')
         priorityDirections["left"] -= 100
-    if(y-1 == 0 or board[x][y-1] == 'm' or  board[x][y-1] == 'o'):
+    if(y-1 == -1 or board[x][y-1] == 'm' or  board[x][y-1] == 'o'):
         priorityDirections["up"] -= 100
         #possibleDirections.append('up')
 
