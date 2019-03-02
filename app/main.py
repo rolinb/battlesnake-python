@@ -80,25 +80,39 @@ def move():
         print("X = " + str(item['x']) + " Y = " +str(item['y']))
         board[item['x']][item['y']] = 1
 
+        snakes = data['board']['snakes']
+    for snake in snakes:
+        for others in snake['body']:
+            #print("wtf" + str(item['y']))
+            board[others['x']][others['y']] = 1
+    #print(snakes)
+    for food in data['board']['food']:
+        board[food['x']][food['y']] = 2
+
+
     #print (board)
     x = me['body'][0]['x']
     y = me['body'][0]['y']
     print(me['health'])
 
+    possibleDirections = []
+
     if(y+1 < width and board[x][y+1] == 0):
         print("chose down" + str(board[x][y+1]))
-        direction = 'down'
-    elif( x+1 < width and board[x+1][y] == 0 ):
+        possibleDirections.append('down')
+    if( x+1 < width and board[x+1][y] == 0 ):
         print("chose right" + str(board[x+1][y]))
         print("X+1 = " + str(x+1))
-        direction = 'right'
-    elif(x-1 > 0 and board[x-1][y] == 0 ):
+        possibleDirections.append('right')
+    if(x-1 > 0 and board[x-1][y] == 0 ):
         print("chose left" + str(board[x-1][y]))
-        direction = 'left'
-    else:
+        possibleDirections.append('left')
+    if(y-1 > 0 and board[x][y-1] == 0):
         print("went up")
-        direction = 'up'
+        possibleDirections.append('up')
 
+
+    direction = random.choice(possibleDirections)
 
     return move_response(direction)
 
