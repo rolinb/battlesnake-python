@@ -141,6 +141,8 @@ def move():
             distFoodUp.append(dist)
         #possibleDirections.append('up')
 
+    
+
     #direction = random.choice(possibleDirections)
     direction = max(priorityDirections.iteritems(), key=operator.itemgetter(1))[0]
 
