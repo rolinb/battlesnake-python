@@ -98,20 +98,20 @@ def move():
 
     if(y+1 < width and board[x][y+1] != 1):
         print("chose down" + str(board[x][y+1]))
-        priorityDirections[3]++
+        priorityDirections[3]+=1
         #possibleDirections.append('down')
     if( x+1 < width and board[x+1][y] != 1 ):
         print("chose right" + str(board[x+1][y]))
         print("X+1 = " + str(x+1))
-        priorityDirections[2]++
+        priorityDirections[2]+=1
         #possibleDirections.append('right')
     if(x-1 > 0 and board[x-1][y] != 1 ):
         print("chose left" + str(board[x-1][y]))
         #possibleDirections.append('left')
-        priorityDirections[0]++
+        priorityDirections[0]+=1
     if(y-1 > 0 and board[x][y-1] != 1):
         print("went up")
-        priorityDirections[1]++
+        priorityDirections[1]+=1
         #possibleDirections.append('up')
 
     dirNum = max(priorityDirections)
