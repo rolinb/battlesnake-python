@@ -114,7 +114,7 @@ def move():
     distFoodUp = []
     distFoodDown = []
 
-    if(y+1 < width and board[x][y+1] != 'm'and board[x][y+1] != 'o' ):
+    if(y+1 < width and board[x][y+1] != 'm' and board[x][y+1] != 'o' ):
         print("chose down" + str(board[x][y+1]))
         priorityDirections["down"] += 1
 
