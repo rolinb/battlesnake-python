@@ -85,7 +85,7 @@ def move():
 
             if(counter == 0 and board[others['x']][others['y']] != 'm'):
                 board[others['x']][others['y']] = 'o'
-                #fix maybe
+                #make do stuff
             else:
                 board[others['x']][others['y']] = 'o'
             counter += 1;
